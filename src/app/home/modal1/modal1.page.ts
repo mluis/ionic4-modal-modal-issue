@@ -11,12 +11,12 @@ export class Modal1Page implements OnInit {
 
   constructor(private modalcontroller: ModalController) {
       const run = async () => {
-          const modal = await modalcontroller.create({ component: Modal2Page, componentProps: {}});
+          const modal = await modalcontroller.create({ component: Modal2Page, componentProps: {}, id: '2'});
           modal.onDidDismiss().then((data) => {
               console.log('modal 2 dismissed', data.data);
             if(data.data){
                 console.log('preparing to dismiss modal 1', data.data);
-              this.modalcontroller.dismiss();
+              this.modalcontroller.dismiss({}, '', '1');
             }
           });
           return await modal.present();
