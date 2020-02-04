@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {ModalController} from '@ionic/angular';
 import {Modal1Page} from './modal1/modal1.page';
+import {ModalControllerComponent} from '../modal-controller/modal-controller.component';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +9,12 @@ import {Modal1Page} from './modal1/modal1.page';
 })
 export class HomePage {
 
-  constructor(private modalcontroller: ModalController) {
+  constructor(private modalcontrollercomponent: ModalControllerComponent) {
 
-      const run = async () => {
-        const modal = await this.modalcontroller.create({ component: Modal1Page, componentProps: {}, id: '1'});
-        return await modal.present();
-      };
-      run();
+      this.modalcontrollercomponent.presentModal(Modal1Page, {}, (response) => {
+          console.log('Response from modal2', response);
+      }, '1');
+
   }
 
 }

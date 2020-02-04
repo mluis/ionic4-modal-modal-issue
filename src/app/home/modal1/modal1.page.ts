@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalController} from '@ionic/angular';
+import {ModalControllerComponent} from '../../modal-controller/modal-controller.component';
 import {Modal2Page} from '../modal2/modal2.page';
+import {ModalController} from '@ionic/angular';
 
 @Component({
   selector: 'app-modal1',
@@ -9,19 +10,15 @@ import {Modal2Page} from '../modal2/modal2.page';
 })
 export class Modal1Page implements OnInit {
 
-  constructor(private modalcontroller: ModalController) {
-      const run = async () => {
-          const modal = await modalcontroller.create({ component: Modal2Page, componentProps: {}, id: '2'});
-          modal.onDidDismiss().then((data) => {
-              console.log('modal 2 dismissed', data.data);
-            if(data.data){
-                console.log('preparing to dismiss modal 1', data.data);
-              this.modalcontroller.dismiss({}, '', '1');
-            }
-          });
-          return await modal.present();
-      };
-      run();
+  constructor(private modalcontrollercomponent: ModalControllerComponent,
+              private modalController: ModalController) {
+
+      this.modalcontrollercomponent.presentModal(Modal2Page, {}, (response) => {
+          console.log('Response from modal1', response);
+          if (response.data === true) {
+              this.modalController.dismiss('', '', '1');
+          }
+      }, '2');
 
   }
 

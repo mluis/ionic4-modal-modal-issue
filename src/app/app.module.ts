@@ -10,15 +10,17 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {Modal1Page} from './home/modal1/modal1.page';
 import {Modal2Page} from './home/modal2/modal2.page';
+import {ModalControllerComponent} from './modal-controller/modal-controller.component';
 
 @NgModule({
-  declarations: [AppComponent, Modal1Page, Modal2Page],
-  entryComponents: [Modal1Page, Modal2Page],
+  declarations: [AppComponent, Modal1Page, Modal2Page, ModalControllerComponent],
+  entryComponents: [Modal1Page, Modal2Page, ModalControllerComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+      ModalControllerComponent
   ],
   bootstrap: [AppComponent]
 })
