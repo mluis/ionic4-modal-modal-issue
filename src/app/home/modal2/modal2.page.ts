@@ -17,6 +17,6 @@ export class Modal2Page implements OnInit {
 
   dismiss() {
       const dismissModal1 = true;
-      this.modalCtrl.dismiss(dismissModal1);
+      this.modalCtrl.dismiss(dismissModal1, '', '2');
   }
 }

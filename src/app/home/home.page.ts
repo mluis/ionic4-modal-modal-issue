@@ -12,7 +12,7 @@ export class HomePage {
   constructor(private modalcontroller: ModalController) {
 
       const run = async () => {
-        const modal = await this.modalcontroller.create({ component: Modal1Page, componentProps: {}});
+        const modal = await this.modalcontroller.create({ component: Modal1Page, componentProps: {}, id: '1'});
         return await modal.present();
       };
       run();
